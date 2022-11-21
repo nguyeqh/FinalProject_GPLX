@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/MainLayout"
+    tools:context=".MainActivity">
+
+<!--    Banner Layout Desgin-->
+    <LinearLayout
+        android:id="@+id/bannerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_green"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lbWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/manrope_wght"
+            android:text="Xin chào,"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:background="@drawable/ic_round_solid"
+            >
+
+            <ImageView
+                android:id="@+id/imgB2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="60dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/char_chinhthuan_happy" />
+
+            <ImageView
+                android:id="@+id/imgB"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="178dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="60dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/char_chinhthuan_happy" />
+
+            <TextView
+                android:id="@+id/lbHangThi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="90dp"
+                android:layout_toEndOf="@+id/imgB2"
+                android:fontFamily="@font/manrope_wght"
+                android:text="Hạng thi"
+                android:textColor="#939393"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBaiTapXe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="91dp"
+                android:layout_toEndOf="@+id/imgB"
+                android:fontFamily="@font/manrope_wght"
+                android:text="Bãi tập xe X"
+                android:textColor="#939393"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginBottom="67dp"
+                android:layout_toEndOf="@+id/imgB"
+                android:fontFamily="@font/manrope_wght"
+                android:text="31/12/2022"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvB1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="65dp"
+                android:layout_toEndOf="@+id/imgB2"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="B1" />
+
+            <TextView
+                android:id="@+id/labelTimeRemain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="193dp"
+                android:layout_marginBottom="24dp"
+                android:text="Thời gian còn lại"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/labelTimeRemain2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="170dp"
+                android:layout_marginTop="73dp"
+                android:layout_marginEnd="193dp"
+                android:layout_marginBottom="19dp"
+                android:text="24 ngày"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+<!--    Bảng chính  -->
+
+    <TextView
+        android:id="@+id/lbTinhTrang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/intertight_wght"
+        android:text="Tình trạng"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerLayout" />
+
+    <RelativeLayout
+        android:id="@+id/layoutTinhTrang"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTinhTrang">
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/lbLoTrinhOnThi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/intertight_wght"
+        android:text="Lộ trình ôn thi"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutTinhTrang" />
+
+    <LinearLayout
+        android:id="@+id/layoutLoTrinhOnTap"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/lbLoTrinhOnThi">
+
+        <ImageView
+            android:id="@+id/btnOnBienBao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/char_chinhthuan_happy" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:barrierDirection="top" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/char_chinhthuan_happy" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:barrierDirection="top" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/char_chinhthuan_happy" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
