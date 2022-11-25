@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/MainLayout"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/milk">
 
 <!--    Banner Layout Desgin-->
     <LinearLayout
@@ -171,6 +172,7 @@
         android:text="Tình trạng"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +186,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbTinhTrang">
+        app:layout_constraintTop_toBottomOf="@+id/lbTinhTrang"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tvTientrinhOnThi"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="314dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="80dp"
+            android:text="0/600"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvTientrinhBaiThi"
@@ -200,6 +216,18 @@
             android:textSize="20sp" />
 
         <ProgressBar
+            android:id="@+id/progressBaiOnTap"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="286dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp" />
+
+        <ProgressBar
             android:id="@+id/progressBaiThi"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="100dp"
@@ -212,20 +240,44 @@
             android:layout_marginBottom="50dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/lbLoTrinhOnTap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="305dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/intertight_wght"
+            android:text="Học\nlý thuyết"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/lbBaiThiHachSach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/intertight_wght"
             android:text="Bài thi \nhạch sách"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_marginStart="120dp"
+            app:srcCompat="@drawable/img_progress" />
     </RelativeLayout>
 
     <TextView
@@ -235,6 +287,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/intertight_wght"
         android:text="Lộ trình ôn thi"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -244,6 +297,7 @@
 
     <LinearLayout
         android:id="@+id/layoutLoTrinhOnTap"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"
@@ -256,11 +310,11 @@
         app:layout_constraintTop_toBottomOf="@+id/lbLoTrinhOnThi">
 
         <ImageView
-            android:id="@+id/btnOnBienBao"
+            android:id="@+id/btnHocBienBao"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/char_chinhthuan_happy" />
+            app:srcCompat="@drawable/img_hocbienbao" />
 
         <androidx.constraintlayout.widget.Barrier
             android:layout_width="2dp"
@@ -269,11 +323,11 @@
             app:barrierDirection="top" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/btnOnLyThuyet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/char_chinhthuan_happy" />
+            app:srcCompat="@drawable/img_hoclythuyet" />
 
         <androidx.constraintlayout.widget.Barrier
             android:layout_width="2dp"
@@ -282,11 +336,11 @@
             app:barrierDirection="top" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/btnThiHachSach"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/char_chinhthuan_happy" />
+            app:srcCompat="@drawable/img_thihachsach" />
     </LinearLayout>
 
 
