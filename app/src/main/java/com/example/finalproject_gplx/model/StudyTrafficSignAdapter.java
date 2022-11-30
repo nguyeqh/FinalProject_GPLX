@@ -19,7 +19,7 @@ public class StudyTrafficSignAdapter extends RecyclerView.Adapter<StudyTrafficSi
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    StudyTrafficSignAdapter(Context context, List<Sign> data) {
+    public StudyTrafficSignAdapter(Context context, List<Sign> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
