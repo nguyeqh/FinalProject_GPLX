@@ -3,22 +3,32 @@ package com.example.finalproject_gplx.DB_helper;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
+import com.example.finalproject_gplx.KetQua;
 import com.example.finalproject_gplx.model.Answer;
 import com.example.finalproject_gplx.model.Exam;
 import com.example.finalproject_gplx.model.Question;
 import com.example.finalproject_gplx.model.Sign;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BD_Helper extends SQLiteOpenHelper {
+
+
+
+    private final Context context;
+    private SQLiteDatabase db;
 
     private static final String TAG = "SQLite";
 
@@ -26,7 +36,10 @@ public class BD_Helper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
-    private static final String DATABASE_NAME = "DB_Question";
+    private static final String DATABASE_NAME = "DB_Question.db";
+
+    // Database Path
+    public static  String DB_PATH;
 
     // Table name:
     private static final String TABLE_EXAM = "EXAM";
@@ -54,20 +67,91 @@ public class BD_Helper extends SQLiteOpenHelper {
     private static final String COLUMN_ANSWER_CONTENT = "ANSWER_CONTENT";
     private static final String COLUMN_ANSWER_CHECK = "ANSWER_CHECK";
 
-
-    public BD_Helper( Context context) {
+    public BD_Helper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
+        DB_PATH = context.getDatabasePath(DATABASE_NAME).toString();
     }
+
+    public void createDatabase()throws IOException {
+        boolean dbExist = checkDatabase();
+        if (dbExist) {
+            // do nothing - database already exist
+            Log.d(TAG, "Database already exist");
+        }
+        boolean dbExist1 = checkDatabase();
+        if (!dbExist1) {
+            // By calling this method and empty database will be created into the default system path
+            // of your application so we are gonna be able to overwrite that database with our database.
+            this.getReadableDatabase();
+            try {
+                this.close();
+                copyDatabase();
+            } catch (IOException e) {
+                throw new Error("Error copying database");
+            }
+        }
+    }
+    private boolean checkDatabase() {
+        boolean checkDB = false;
+        try {
+            String myPath = DB_PATH;
+            File dbfile = new File(myPath);
+            checkDB = dbfile.exists();
+        } catch (SQLiteException e) {
+            // database does't exist yet.
+        }
+        return checkDB;
+    }
+    private void copyDatabase() throws IOException {
+        // Open your local db as the input stream
+        InputStream myInput = context.getAssets().open(DATABASE_NAME);
+        // Path to the just created empty db
+        String outFileName = DB_PATH;
+        // Open the empty db as the output stream
+        OutputStream myOutput = new FileOutputStream(outFileName);
+        // transfer bytes from the inputfile to the outputfile
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = myInput.read(buffer)) > 0) {
+            myOutput.write(buffer, 0, length);
+        }
+        // Close the streams
+        myOutput.flush();
+        myOutput.close();
+        myInput.close();
+    }
+    public void openDatabase() throws SQLiteException {
+        // Open the database
+        String myPath = DB_PATH;
+        db = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+    }
+
+    //delete database
+    public void deleteDatabase() {
+        File file = new File(DB_PATH);
+        if (file.exists()) {
+            file.delete();
+            System.out.println("delete database file.");
+        }
+    }
+    //close database
+    public synchronized void close() throws SQLException {
+        if (db != null)
+            db.close();
+        super.close();
+    }
+
 
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        //Using exiting database so we don't need to create it
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        //Using exiting database so we don't need to upgrade it
     }
 
     //Get All Question
@@ -250,6 +334,9 @@ public class BD_Helper extends SQLiteOpenHelper {
         cursor.close();
         return list;
     }
+
+
+
     //Add Exam
     public void addExam(Exam exam){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -258,6 +345,17 @@ public class BD_Helper extends SQLiteOpenHelper {
         values.put(COLUMN_EXAM_LIST_ANS, exam.getList_ans());
         values.put(COLUMN_EXAM_SCORE, exam.getScore());
         db.insert(TABLE_EXAM, null, values);
+        db.close();
+    }
+
+    //Update Exam
+    public void updateExam(Exam exam){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_EXAM_LIST_QUES, exam.getList_ques());
+        values.put(COLUMN_EXAM_LIST_ANS, exam.getList_ans());
+        values.put(COLUMN_EXAM_SCORE, exam.getScore());
+        db.update(TABLE_EXAM, values, COLUMN_EXAM_ID + " = ?", new String[]{String.valueOf(exam.getId())});
         db.close();
     }
 
