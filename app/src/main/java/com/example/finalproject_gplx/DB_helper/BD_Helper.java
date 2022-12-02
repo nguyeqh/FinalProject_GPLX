@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.finalproject_gplx.KetQua;
 import com.example.finalproject_gplx.model.Answer;
 import com.example.finalproject_gplx.model.Exam;
 import com.example.finalproject_gplx.model.Question;
@@ -78,6 +77,8 @@ public class BD_Helper extends SQLiteOpenHelper {
         if (dbExist) {
             // do nothing - database already exist
             Log.d(TAG, "Database already exist");
+            deleteDatabase();
+            createDatabase();
         }
         boolean dbExist1 = checkDatabase();
         if (!dbExist1) {
@@ -334,6 +335,7 @@ public class BD_Helper extends SQLiteOpenHelper {
         cursor.close();
         return list;
     }
+
 
 
 
