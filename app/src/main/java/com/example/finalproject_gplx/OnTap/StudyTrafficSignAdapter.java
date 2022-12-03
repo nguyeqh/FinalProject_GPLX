@@ -1,6 +1,7 @@
-package com.example.finalproject_gplx.model;
+package com.example.finalproject_gplx.OnTap;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.finalproject_gplx.DB_helper.BD_Helper;
 import com.example.finalproject_gplx.R;
+import com.example.finalproject_gplx.model.Sign;
 
 import java.util.List;
 
@@ -17,9 +20,11 @@ public class StudyTrafficSignAdapter extends RecyclerView.Adapter<StudyTrafficSi
     private List<Sign> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private Context context;
 
     // data is passed into the constructor
     public StudyTrafficSignAdapter(Context context, List<Sign> data) {
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -35,6 +40,12 @@ public class StudyTrafficSignAdapter extends RecyclerView.Adapter<StudyTrafficSi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Sign sign = mData.get(position);
+        holder.myTextView.setText(sign.getName());
+        Resources res = context.getResources();
+        String mDrawableName = sign.getImage();
+        int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
+        //holder.signImage.setImageResource(resID);
+        //holder.signImage.setImageResource(R.drawable.img_bbao_cam_111d);
     }
 
     // total number of rows

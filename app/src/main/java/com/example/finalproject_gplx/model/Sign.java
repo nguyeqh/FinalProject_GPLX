@@ -11,8 +11,8 @@ public class Sign {
     public Sign() {
     }
 
-    public Sign( String name, String image, String type) {
-
+    public Sign( int id,String name, String image, String type) {
+        this.id = id;
         this.name = name;
         this.image = image;
         this.type = type;
