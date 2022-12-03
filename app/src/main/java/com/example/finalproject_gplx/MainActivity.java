@@ -8,16 +8,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
-import com.example.finalproject_gplx.DB_helper.BD_Helper;
+
 import com.example.finalproject_gplx.DanhSachDeThi.ExamActivity;
 
 import com.example.finalproject_gplx.OnTap.HocBienBao;
-import com.example.finalproject_gplx.model.Question;
-import com.example.finalproject_gplx.model.Sign;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {

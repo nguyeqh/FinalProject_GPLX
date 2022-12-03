@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThiTracNghiem"
-    android:backgroundTint="@color/milk">
+    android:backgroundTint="@color/milk"
+    tools:context=".DanhSachDeThi.ThiTracNghiem">
 
     <RelativeLayout
         android:id="@+id/layoutBanner"
@@ -20,15 +20,14 @@
 
         <ImageButton
             android:id="@+id/imaButtonHome"
+            android:layout_width="60dp"
+            android:layout_height="57dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
+            android:layout_marginStart="52dp"
             android:backgroundTint="@color/transparent"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/button_home" />
+            app:srcCompat="@drawable/button_home"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/lbTheme"
@@ -46,7 +45,6 @@
             android:textStyle="bold" />
 
 
-
     </RelativeLayout>
 
     <LinearLayout
@@ -54,11 +52,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:backgroundTint="@color/white"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutBanner"
-        android:backgroundTint="@color/white">
+        app:layout_constraintTop_toBottomOf="@id/layoutBanner">
+        <!--app:layout_constraintStart_toBottomOf="parent"-->
 
         <TextView
             android:id="@+id/tvQuestion"
@@ -98,8 +96,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
-        android:text="Câu kế tiếp"
         android:backgroundTint="@color/dark_green"
+        android:text="Câu kế tiếp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -110,8 +108,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:text="Câu trước"
         android:backgroundTint="@color/dark_green"
+        android:text="Câu trước"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
