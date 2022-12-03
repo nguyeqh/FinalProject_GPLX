@@ -39,11 +39,7 @@ public class StudyTrafficSignAdapter extends RecyclerView.Adapter<StudyTrafficSi
     public void onBindViewHolder(ViewHolder holder, int position) {
         Sign sign = mData.get(position);
         holder.myTextView.setText(sign.getName());
-        Resources res = context.getResources();
         String mDrawableName = sign.getImage();
-        int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
-        //holder.signImage.setImageResource(resID);
-        //holder.signImage.setImageResource(R.drawable.img_bbao_cam_111d);
         mDrawableName = mDrawableName.substring(0, mDrawableName.length() - 5);
 
         String uri = "@drawable/" + mDrawableName;  // where myresource (without the extension) is the file

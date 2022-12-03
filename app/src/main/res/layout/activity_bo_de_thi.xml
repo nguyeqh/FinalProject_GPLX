@@ -9,9 +9,11 @@
         android:id="@+id/constraintLayout"
         android:layout_width="410dp"
         android:layout_height="68dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:background="@drawable/bg_green"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,6 +38,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/abc_vector_test" />
+
+        <Button
+            android:id="@+id/btn_create_exam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="37dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#2196F3"
+            android:text="Đề mới"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -19,7 +19,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bộ Question"
+            android:text="Bộ Câu Hỏi"
             android:textColor="#fff"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -36,6 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/abc_vector_test" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

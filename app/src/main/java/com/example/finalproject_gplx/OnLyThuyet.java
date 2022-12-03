@@ -24,7 +24,7 @@ public class OnLyThuyet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bo_cau_hoi);
+        setContentView(R.layout.activity_thi_trac_nghiem);
         Objects.requireNonNull(getSupportActionBar()).hide();
         rvLyThuyet = findViewById(R.id.list_cau_hoi);
         initListViewData();

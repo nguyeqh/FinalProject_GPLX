@@ -11,7 +11,8 @@ public class Question {
     public Question() {
     }
 
-    public Question( String content, String image) {
+    public Question( int id,String content, String image) {
+        this.id = id;
         this.content = content;
         this.image = image;
 
@@ -49,6 +50,9 @@ public class Question {
         this.answers = answer;
     }
 
+    public void addAnswer(Answer answer) {
+        this.answers.add(answer);
+    }
     @Override
     public String toString() {
         return "Question{" +

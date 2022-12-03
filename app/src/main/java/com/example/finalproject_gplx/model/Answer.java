@@ -10,8 +10,8 @@ public class Answer {
     public Answer() {
     }
 
-    public Answer(  int ques_id, String content, boolean check) {
-
+    public Answer(int ans_id,  int ques_id, String content, boolean check) {
+        this.ans_id = ans_id;
         this.ans_ques_id = ques_id;
         this.content = content;
         this.check = check;

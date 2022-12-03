@@ -11,11 +11,14 @@ public class Exam {
     private List<Answer> answers;
 
     public Exam() {
+        this.List_ans = "";
+        this.List_ques = "";
+        this.score = 0;
     }
 
 
-    public Exam( String list_ques, String list_ans, int score) {
-
+    public Exam( int id,String list_ques, String list_ans, int score) {
+        this.id = id;
         List_ques = list_ques;
         List_ans = list_ans;
         this.score = score;

@@ -27,24 +27,12 @@ public class HocBienBao extends AppCompatActivity {
         rvBienBaoCam = findViewById(R.id.recyclerViewBienBaoCam);
         rvBienBaoChiDan = findViewById(R.id.recyclerViewBienBaoHieuLenh);
         rvBienBaoNguyHiem = findViewById(R.id.recyclerViewBienBaoNguyHiem);
-
-
-        //List<Sign> listBienBaoCam =  databaseHelper.getAllSign();
-
-
-//        StudyTrafficSignAdapter arrayAdapterBBCam = new StudyTrafficSignAdapter(this, listBienBaoCam);
-//        this.rvBienBaoCam.setAdapter(arrayAdapterBBCam);
-//
         initListViewData();
     }
 
     private void initListViewData() {
         databaseHelper = new BD_Helper(HocBienBao.this);
-        try {
-            databaseHelper.createDatabase();
-        } catch (Exception e) {
 
-        }
         try {
             databaseHelper.openDatabase();
         } catch (Exception e) {
@@ -77,10 +65,4 @@ public class HocBienBao extends AppCompatActivity {
         this.rvBienBaoChiDan.setAdapter(arrayAdapterBBHieuLenh);
         this.rvBienBaoChiDan.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
-
-    public static final String TAG = "ListViewExample";
-
-
-
-
 }

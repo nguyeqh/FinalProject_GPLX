@@ -312,7 +312,13 @@ public class BD_Helper extends SQLiteOpenHelper {
             do {
                 Answer answer = new Answer();
                 answer.setAns_id(cursor.getInt(0));
-                answer.setContent(cursor.getString(1));
+                answer.setQues_id(cursor.getInt(1));
+                answer.setContent(cursor.getString(2));
+                int check = cursor.getInt(3);
+                if (check == 1)
+                    answer.setCheck(true);
+                else
+                    answer.setCheck(false);
                 //get check
                 //answer.setCheck(cursor.getInt(2));
                 answerList.add(answer);
@@ -341,7 +347,7 @@ public class BD_Helper extends SQLiteOpenHelper {
 
 
     //Add Exam
-    public void addExam(Exam exam){
+    public Exam addExam(Exam exam){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_EXAM_LIST_QUES, exam.getList_ques());
@@ -349,6 +355,7 @@ public class BD_Helper extends SQLiteOpenHelper {
         values.put(COLUMN_EXAM_SCORE, exam.getScore());
         db.insert(TABLE_EXAM, null, values);
         db.close();
+        return exam;
     }
 
     //Update Exam
@@ -370,7 +377,35 @@ public class BD_Helper extends SQLiteOpenHelper {
             do {
                 Answer answer = new Answer();
                 answer.setAns_id(cursor.getInt(0));
-                answer.setContent(cursor.getString(1));
+                answer.setQues_id(cursor.getInt(1));
+                answer.setContent(cursor.getString(2));
+                int check= cursor.getInt(3);
+                if (check==1){
+                    answer.setCheck(true);
+                }else {
+                    answer.setCheck(false);
+                }
+                answerList.add(answer);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return answerList;
+    }
+
+    public List<Answer> getAnswerByQuestion(int id) {
+        List<Answer> answerList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_ANSWER + " WHERE " + COLUMN_ANSWER_QUESTION_ID + " = " + id, null);
+        if (cursor.moveToFirst()){
+            do {
+                Answer answer = new Answer();
+                answer.setAns_id(cursor.getInt(0));
+                answer.setQues_id(cursor.getInt(1));
+                answer.setContent(cursor.getString(2));
+                if (cursor.getInt(3) == 1)
+                    answer.setCheck(true);
+                else
+                    answer.setCheck(false);
                 answerList.add(answer);
             }while (cursor.moveToNext());
         }

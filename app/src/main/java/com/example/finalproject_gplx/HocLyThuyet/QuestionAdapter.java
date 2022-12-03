@@ -30,9 +30,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
 
     public QuestionAdapter( Context context, List<Question> questionList) {
-
         this.context = context;
         this.questionList = questionList;
+        this.mInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -55,12 +55,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         Question question = questionList.get(position);
         holder.question.setText(question.getContent());
         List<Answer> lst=question.getAnswer();
+        holder.answer.setText("ko co cau trl");
         for (Answer answer:lst){
             if (answer.isCheck()){
                 holder.answer.setText(answer.getContent());
             }
         }
-
     }
 
     public static class QuestionViewHolder extends RecyclerView.ViewHolder {
@@ -68,6 +68,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
         public QuestionViewHolder(@NonNull View itemView) {
             super(itemView);
+            question=itemView.findViewById(R.id.tvQues);
+            answer=itemView.findViewById(R.id.tvAns);
         }
     }
 

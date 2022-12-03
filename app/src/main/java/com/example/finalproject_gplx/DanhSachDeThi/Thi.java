@@ -33,6 +33,11 @@ public class Thi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam);
         databaseHelper = new BD_Helper(Thi.this);
+        try {
+            databaseHelper.openDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         txtTime = findViewById(R.id.txtTime);
         txtDe_thi = findViewById(R.id.txtDe_thi);
         txtTien_do = findViewById(R.id.txtTien_do);

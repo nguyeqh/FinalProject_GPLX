@@ -62,6 +62,10 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamViewHolder
         return 0;
     }
 
+    public void updateList(List<Exam> examList) {
+        this.examList = examList;
+        notifyDataSetChanged();
+    }
 
     public static class ExamViewHolder extends RecyclerView.ViewHolder {
         TextView name;
