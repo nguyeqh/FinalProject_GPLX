@@ -68,12 +68,14 @@ public class HocBienBao extends AppCompatActivity {
         StudyTrafficSignAdapter arrayAdapterBBCam = new StudyTrafficSignAdapter(this, listBienBaoCam);
         this.rvBienBaoCam.setAdapter(arrayAdapterBBCam);
         this.rvBienBaoCam.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
         StudyTrafficSignAdapter arrayAdapterBBNguyHiem = new StudyTrafficSignAdapter(this, listBienBaoNguyHiem);
         this.rvBienBaoNguyHiem.setAdapter(arrayAdapterBBNguyHiem);
-        //this.rvBienBaoNguyHiem.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        this.rvBienBaoNguyHiem.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
         StudyTrafficSignAdapter arrayAdapterBBHieuLenh = new StudyTrafficSignAdapter(this, listBienHieuLenh);
         this.rvBienBaoChiDan.setAdapter(arrayAdapterBBHieuLenh);
-        //this.rvBienBaoChiDan.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        this.rvBienBaoChiDan.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 
     public static final String TAG = "ListViewExample";

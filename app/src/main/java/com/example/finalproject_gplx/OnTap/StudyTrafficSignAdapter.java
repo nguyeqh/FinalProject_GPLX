@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.finalproject_gplx.DB_helper.BD_Helper;
 import com.example.finalproject_gplx.R;
 import com.example.finalproject_gplx.model.Sign;
@@ -45,7 +43,12 @@ public class StudyTrafficSignAdapter extends RecyclerView.Adapter<StudyTrafficSi
         String mDrawableName = sign.getImage();
         int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
         //holder.signImage.setImageResource(resID);
-        holder.signImage.setImageResource(R.drawable.img_bbao_cam_111d);
+        //holder.signImage.setImageResource(R.drawable.img_bbao_cam_111d);
+        mDrawableName = mDrawableName.substring(0, mDrawableName.length() - 5);
+
+        String uri = "@drawable/" + mDrawableName;  // where myresource (without the extension) is the file
+        int imageResource = context.getApplicationContext().getResources().getIdentifier(uri, null, context.getApplicationContext().getPackageName());
+        holder.signImage.setImageResource(imageResource);
     }
 
     // total number of rows
@@ -87,5 +90,7 @@ public class StudyTrafficSignAdapter extends RecyclerView.Adapter<StudyTrafficSi
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
+
+
 }
 

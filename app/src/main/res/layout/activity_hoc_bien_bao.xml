@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OnTap.HocBienBao">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <RelativeLayout
         android:id="@+id/layoutBanner"
@@ -51,8 +57,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutContent"
-        android:layout_width="409dp"
-        android:layout_height="659dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,9 +70,22 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="@font/intertight_wght"
+            android:textStyle="bold"
             android:text="Biển báo cấm"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
+        <TextView
+            android:id="@+id/lbDesBienBaoCam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/intertight_wght"
+            android:textStyle="italic"
+            android:text="Hầu hết các biển đều có viền đỏ, nền màu trắng, trên nền có hình vẽ màu đen đặc trưng cho điều cấm hoặc hạn chế sự đi lại của các phương tiện cơ giới, thô sơ và người đi bộ."
+            android:textAlignment="viewStart"
+            android:textColor="@color/grey"
+            android:textSize="15sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewBienBaoCam"
@@ -84,7 +103,20 @@
             android:fontFamily="@font/intertight_wght"
             android:text="Biển báo nguy hiểm"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textSize="30sp" />
+        <TextView
+            android:id="@+id/lbDesBienBaoNguyHiem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/intertight_wght"
+            android:textStyle="italic"
+            android:text="Biển báo nguy hiểm là biển báo có dạng hình tam giác đều, viền đỏ, nền màu vàng, trên có hình vẽ màu đen mô tả sự việc báo hiệu nhằm báo cho người sử dụng đường biết trước tính chất các sự nguy hiểm trên đường để có biện pháp phòng ngừa, xử trí."
+            android:textAlignment="viewStart"
+            android:textColor="@color/grey"
+            android:textSize="15sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewBienBaoNguyHiem"
@@ -104,7 +136,21 @@
             android:fontFamily="@font/intertight_wght"
             android:text="Biển báo hiệu lệnh"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/lbDesBienHieuLenh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/intertight_wght"
+            android:textStyle="italic"
+            android:text="Nhóm biển báo giao thông này có dạng hình tròn, nền xanh với hình vẽ màu trắng. Chúng đưa ra những hiệu lệnh mà người đi đường phải thực hiện, chẳng hạn như: phải đi thẳng, vòng sang phải, chạy nhanh hơn tốc độ tối thiểu..."
+            android:textAlignment="viewStart"
+            android:textColor="@color/grey"
+            android:textSize="15sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewBienBaoHieuLenh"
@@ -118,4 +164,6 @@
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

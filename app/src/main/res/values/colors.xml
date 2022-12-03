@@ -11,4 +11,5 @@
     <color name="dark_green">#28501A</color>
     <color name="red_correct">#9A1A1A</color>
     <color name="transparent">#00000000</color>
+    <color name="grey">#676767</color>
 </resources>
