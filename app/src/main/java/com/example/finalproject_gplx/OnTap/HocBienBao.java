@@ -50,6 +50,8 @@ public class HocBienBao extends AppCompatActivity {
         } catch (Exception e) {
 
         }
+
+
         List<Sign> listSign =  databaseHelper.getAllSign();
         List<Sign> listBienBaoCam =  new ArrayList<>();
         List<Sign> listBienBaoNguyHiem =  new ArrayList<>();

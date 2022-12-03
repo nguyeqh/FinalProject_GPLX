@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         btnOnLyThuyet.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, OnLyThuyet.class);
+            Intent intent = new Intent( MainActivity.this, OnLyThuyet.class);
             startActivity(intent);
         });
 

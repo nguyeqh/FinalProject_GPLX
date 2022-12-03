@@ -45,7 +45,7 @@ public class StudyTrafficSignAdapter extends RecyclerView.Adapter<StudyTrafficSi
         String mDrawableName = sign.getImage();
         int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
         //holder.signImage.setImageResource(resID);
-        //holder.signImage.setImageResource(R.drawable.img_bbao_cam_111d);
+        holder.signImage.setImageResource(R.drawable.img_bbao_cam_111d);
     }
 
     // total number of rows

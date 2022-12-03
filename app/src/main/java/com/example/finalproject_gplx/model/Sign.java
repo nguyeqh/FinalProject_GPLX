@@ -46,6 +46,7 @@ public class Sign {
         return type;
     }
 
+
     public void setType(String type) {
         this.type = type;
     }

@@ -79,6 +79,7 @@ public class BD_Helper extends SQLiteOpenHelper {
             Log.d(TAG, "Database already exist");
             deleteDatabase();
             createDatabase();
+            //openDatabase();
         }
         boolean dbExist1 = checkDatabase();
         if (!dbExist1) {
@@ -361,4 +362,19 @@ public class BD_Helper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public List<Answer> getAllAnswer() {
+        List<Answer> answerList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_ANSWER, null);
+        if (cursor.moveToFirst()){
+            do {
+                Answer answer = new Answer();
+                answer.setAns_id(cursor.getInt(0));
+                answer.setContent(cursor.getString(1));
+                answerList.add(answer);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return answerList;
+    }
 }

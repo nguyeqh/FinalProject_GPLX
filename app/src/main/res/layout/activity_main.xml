@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     android:background="@color/milk">
 
+
 <!--    Banner Layout Desgin-->
     <LinearLayout
         android:id="@+id/bannerLayout"

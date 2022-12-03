@@ -13,6 +13,7 @@ public class Exam {
     public Exam() {
     }
 
+
     public Exam( String list_ques, String list_ans, int score) {
 
         List_ques = list_ques;
