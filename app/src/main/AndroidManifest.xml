@@ -14,10 +14,18 @@
         android:theme="@style/Theme.FinalProject_GPLX"
         tools:targetApi="31">
         <activity
-            android:name=".HocBienBao"
+            android:name=".OnTap.HocBienBao"
             android:exported="false" />
         <activity
-            android:name=".ThiTracNghiem"
+            android:name=".DanhSachDeThi.ThiTracNghiem"
+            android:exported="false" />
+        <activity
+            android:name=".OnLyThuyet"
+            android:exported="false" />
+        <activity
+            android:name=".DanhSachDeThi.ExamActivity"
+            android:exported="false" />
+        <activity android:name=".HocLyThuyet.ActivityQuestion"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
