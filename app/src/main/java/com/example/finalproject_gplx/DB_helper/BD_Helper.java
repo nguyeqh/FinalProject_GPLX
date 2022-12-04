@@ -48,8 +48,8 @@ public class BD_Helper extends SQLiteOpenHelper {
 
     // Common column names
     private static final String COLUMN_EXAM_ID = "EXAM_ID";
-    private static final String COLUMN_EXAM_LIST_QUES = "EXAM_NAME";
-    private static final String COLUMN_EXAM_LIST_ANS = "EXAM_IMAGE";
+    private static final String COLUMN_EXAM_LIST_QUES = "EXAM_LIST_QUEST";
+    private static final String COLUMN_EXAM_LIST_ANS = "EXAM_LIST_ANS";
     private static final String COLUMN_EXAM_SCORE = "EXAM_SCORE";
 
     private static final String COLUMN_SIGN_ID = "SIGN_ID";

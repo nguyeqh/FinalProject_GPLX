@@ -41,12 +41,14 @@ public class ExamActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         examList = databaseHelper.getAllExam();
+        examAdapter = new ExamAdapter(this, examList);
         if (examList.size() > 0) {
-            examAdapter = new ExamAdapter(this, examList);
             rvExam.setAdapter(examAdapter);
             rvExam.setLayoutManager(new LinearLayoutManager(this));
         }else {
             Toast.makeText(this, "Không có đề thi nào", Toast.LENGTH_SHORT).show();
+            rvExam.setAdapter(examAdapter);
+            rvExam.setLayoutManager(new LinearLayoutManager(this));
         }
         btnCreate.setOnClickListener(v -> {
             Exam exam = new Exam();
