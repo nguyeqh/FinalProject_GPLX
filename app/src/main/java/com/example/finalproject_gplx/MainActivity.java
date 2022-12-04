@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.finalproject_gplx.DanhSachDeThi.ExamActivity;
 
 import com.example.finalproject_gplx.DanhSachDeThi.Thi;
+import com.example.finalproject_gplx.DanhSachDeThi.ThiTracNghiem;
 import com.example.finalproject_gplx.HocLyThuyet.ActivityQuestion;
 import com.example.finalproject_gplx.OnTap.HocBienBao;
 
@@ -128,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         btnOnLyThuyet.setOnClickListener(v -> {
-            Intent intent = new Intent( MainActivity.this, ActivityQuestion.class);
+            Intent intent = new Intent( MainActivity.this, ThiTracNghiem.class);
             startActivity(intent);
         });
 

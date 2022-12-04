@@ -34,7 +34,7 @@ public class HocBienBao extends AppCompatActivity {
         databaseHelper = new BD_Helper(HocBienBao.this);
 
         try {
-            databaseHelper.openDatabase();
+            databaseHelper.createDatabase();
         } catch (Exception e) {
 
         }

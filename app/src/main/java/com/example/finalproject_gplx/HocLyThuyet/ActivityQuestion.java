@@ -35,13 +35,14 @@ public class ActivityQuestion extends AppCompatActivity {
         db=new BD_Helper(ActivityQuestion.this);
 
         try {
-            db.openDatabase();
+            db.createDatabase();
         } catch (Exception e) {
             e.printStackTrace();
         }
         List<Question> listQuestion = db.getAllQuestion();
 
         List<Answer> as=db.getAnswersByQuestionId(1);
+
         for (Question question : listQuestion) {
             List<Answer> listAnswerByQuestionId = db.getAnswersByQuestionId(question.getId());
             question.setAnswer(listAnswerByQuestionId);
