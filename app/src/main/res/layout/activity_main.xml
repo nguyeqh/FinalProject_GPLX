@@ -9,7 +9,9 @@
     android:background="@color/milk">
 
 
-<!--    Banner Layout Desgin-->
+
+
+    <!--    Banner Layout Desgin-->
     <LinearLayout
         android:id="@+id/bannerLayout"
         android:layout_width="match_parent"
@@ -56,7 +58,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="60dp"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/char_chinhthuan_happy" />
+                app:srcCompat="@drawable/img_caricon" />
+
 
             <ImageView
                 android:id="@+id/imgB"
@@ -69,7 +72,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="60dp"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/char_chinhthuan_happy" />
+                app:srcCompat="@drawable/img_calenicon" />
 
             <TextView
                 android:id="@+id/lbHangThi"
@@ -101,6 +104,8 @@
                 android:textColor="#939393"
                 android:textStyle="bold" />
 
+
+
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
@@ -112,7 +117,7 @@
                 android:layout_marginBottom="67dp"
                 android:layout_toEndOf="@+id/imgB"
                 android:fontFamily="@font/manrope_wght"
-                android:text="31/12/2022"
+                android:text="31/12/2002"
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
@@ -162,7 +167,7 @@
 
     </LinearLayout>
 
-<!--    Bảng chính  -->
+    <!--    Bảng chính  -->
 
     <TextView
         android:id="@+id/lbTinhTrang"
@@ -343,6 +348,30 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/img_thihachsach" />
     </LinearLayout>
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:datePickerMode="calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btnOkDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker"
+        android:backgroundTint="@color/cyan"
+        android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
