@@ -40,15 +40,22 @@ public class Thi extends AppCompatActivity {
         }
         txtTime = findViewById(R.id.txtTime);
         txtDe_thi = findViewById(R.id.txtDe_thi);
+        txtDe_thi.setText("jaksgfjaks");
         txtTien_do = findViewById(R.id.txtTien_do);
         btn_submit = findViewById(R.id.btn_submit);
-        txtDe_thi.setText("Đề thi số: "+getIntent().getStringExtra("de_thi"));
+
+        List<Exam> examList = databaseHelper.getAllExam();
         int id_exam = Integer.parseInt(getIntent().getStringExtra("de_thi"));
-        exam = databaseHelper.getExamById(id_exam);
-        exam=databaseHelper.getExamDetail(exam);
-        questionList=exam.getQuestions();
-        //ExamAdapter examAdapter = new ExamAdapter(this,questionList);
-        //rvQuestion.setAdapter(examAdapter);
+        for (Exam exam:examList){
+            if (exam.getId()==id_exam){
+                this.exam = exam;
+            }
+        }
+        txtDe_thi.setText("Đề thi số: "+exam.getId());
+//        exam=databaseHelper.getExamDetail(exam);
+//        questionList=exam.getQuestions();
+//        //ExamAdapter examAdapter = new ExamAdapter(this,questionList);
+//        //rvQuestion.setAdapter(examAdapter);
         startTimer();
 
     }

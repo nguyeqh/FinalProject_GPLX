@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:id="@+id/layoutBanner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:background="@drawable/bg_green"
         android:orientation="horizontal"
@@ -46,11 +46,11 @@
 
         <TextView
             android:id="@+id/txtDe_thi"
-            android:layout_width="49dp"
+            android:layout_width="103dp"
             android:layout_height="26dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="87dp"
+            android:layout_marginStart="44dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="19dp"
             android:layout_toEndOf="@+id/txtTime"

@@ -145,6 +145,20 @@ public class BD_Helper extends SQLiteOpenHelper {
     }
 
 
+    public void onUpGrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (newVersion > oldVersion) {
+            Log.v("Database Upgrade", "Database version higher than old.");
+            deleteDatabase();
+            try {
+                copyDatabase();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -347,15 +361,15 @@ public class BD_Helper extends SQLiteOpenHelper {
 
 
     //Add Exam
-    public Exam addExam(Exam exam){
+    public void addExam(Exam exam){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_EXAM_LIST_QUES, exam.getList_ques());
-        values.put(COLUMN_EXAM_LIST_ANS, exam.getList_ans());
-        values.put(COLUMN_EXAM_SCORE, exam.getScore());
-        db.insert(TABLE_EXAM, null, values);
-        db.close();
-        return exam;
+        String id="null";
+        values.put(COLUMN_EXAM_ID, id);
+        values.put("EXAM_LIST_QUEST",exam.getList_ques());
+        values.put("EXAM_LIST_ANS","");
+        values.put("EXAM_SCORE","");
+        db.insert(TABLE_EXAM, null,values);
     }
 
     //Update Exam

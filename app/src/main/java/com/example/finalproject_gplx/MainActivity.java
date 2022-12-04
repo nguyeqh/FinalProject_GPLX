@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.finalproject_gplx.DanhSachDeThi.ExamActivity;
 
+import com.example.finalproject_gplx.DanhSachDeThi.Thi;
 import com.example.finalproject_gplx.HocLyThuyet.ActivityQuestion;
 import com.example.finalproject_gplx.OnTap.HocBienBao;
 
@@ -116,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void buttonClickManager(){
         btnHocBienBao.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, HocBienBao.class);
+            Intent intent = new Intent(MainActivity.this, Thi.class);
+            intent.putExtra("de_thi","1");
             startActivity(intent);
         });
 

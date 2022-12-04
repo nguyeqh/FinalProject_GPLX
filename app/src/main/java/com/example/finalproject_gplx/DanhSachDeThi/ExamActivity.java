@@ -22,7 +22,6 @@ public class ExamActivity extends AppCompatActivity {
     private List<Exam> examList;
     private Button btnCreate;
     private RecyclerView rvExam;
-    private ExamAdapter examAdapter;
     private BD_Helper databaseHelper;
 
     @Override
@@ -41,26 +40,27 @@ public class ExamActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         examList = databaseHelper.getAllExam();
-        examAdapter = new ExamAdapter(this, examList);
+        ExamAdapter adapter = new ExamAdapter(this, examList);
+
         if (examList.size() > 0) {
-            rvExam.setAdapter(examAdapter);
-            rvExam.setLayoutManager(new LinearLayoutManager(this));
+            adapter=new ExamAdapter(ExamActivity.this,examList);
+            rvExam.setAdapter(adapter);
+            rvExam.setLayoutManager(new LinearLayoutManager(ExamActivity.this, LinearLayoutManager.VERTICAL, false));
         }else {
             Toast.makeText(this, "Không có đề thi nào", Toast.LENGTH_SHORT).show();
-            rvExam.setAdapter(examAdapter);
-            rvExam.setLayoutManager(new LinearLayoutManager(this));
+            rvExam.setAdapter(adapter);
+            rvExam.setLayoutManager(new LinearLayoutManager(ExamActivity.this, LinearLayoutManager.VERTICAL, false));
         }
         btnCreate.setOnClickListener(v -> {
-            Exam exam = new Exam();
-            exam=createExam();
-            examList.add(exam);
-            examAdapter.notifyDataSetChanged();
-            Toast.makeText(this, exam.getList_ques(), Toast.LENGTH_SHORT).show();
+            examList.clear();
+            createExam();
+            examList = databaseHelper.getAllExam();
+
         });
 
     }
 
-    private Exam createExam() {
+    private void createExam() {
         Exam exam = new Exam();
         //random 25 number from 1 to 600
         Random random = new Random();
@@ -89,8 +89,8 @@ public class ExamActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        exam=databaseHelper.addExam(exam);
-        return  exam;
+        databaseHelper.addExam(exam);
+
     }
 
     private void createDatabase() {

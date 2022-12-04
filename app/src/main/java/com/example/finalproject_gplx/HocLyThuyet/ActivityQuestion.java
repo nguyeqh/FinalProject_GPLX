@@ -39,11 +39,6 @@ public class ActivityQuestion extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            db.createDatabase();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         List<Question> listQuestion = db.getAllQuestion();
 
         List<Answer> as=db.getAnswersByQuestionId(1);

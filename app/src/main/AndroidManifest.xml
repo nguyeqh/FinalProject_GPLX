@@ -22,6 +22,8 @@
         <activity
             android:name=".OnLyThuyet"
             android:exported="false" />
+        <activity android:name=".DanhSachDeThi.Thi"
+            android:exported="false" />
         <activity
             android:name=".DanhSachDeThi.ExamActivity"
             android:exported="false" />
