@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalproject_gplx.DB_helper.BD_Helper;
 import com.example.finalproject_gplx.MainActivity;
 import com.example.finalproject_gplx.R;
+import com.example.finalproject_gplx.model.Answer;
 import com.example.finalproject_gplx.model.Exam;
 import com.example.finalproject_gplx.model.Question;
 
@@ -40,7 +41,6 @@ public class Thi extends AppCompatActivity {
         }
         txtTime = findViewById(R.id.txtTime);
         txtDe_thi = findViewById(R.id.txtDe_thi);
-        txtDe_thi.setText("jaksgfjaks");
         txtTien_do = findViewById(R.id.txtTien_do);
         btn_submit = findViewById(R.id.btn_submit);
 
@@ -51,11 +51,21 @@ public class Thi extends AppCompatActivity {
                 this.exam = exam;
             }
         }
+        String question = exam.getList_ques();
+        String[] list_question = question.split(",");
+        List<Question> lst = databaseHelper.getAllQuestion();
+        List<Answer> lst_answer = databaseHelper.getAllAnswer();
+        for(Question question1:lst){
+            List<Answer> answerList = databaseHelper.getAnswersByQuestionId(question1.getId());
+            question1.setAnswer(answerList);
+        }
+
+
         txtDe_thi.setText("Đề thi số: "+exam.getId());
 //        exam=databaseHelper.getExamDetail(exam);
 //        questionList=exam.getQuestions();
-//        //ExamAdapter examAdapter = new ExamAdapter(this,questionList);
-//        //rvQuestion.setAdapter(examAdapter);
+        //ExamAdapter examAdapter = new ExamAdapter(this,questionList);
+        //rvQuestion.setAdapter(examAdapter);
         startTimer();
 
     }
