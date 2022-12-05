@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject_gplx.DB_helper.BD_Helper;
@@ -18,7 +22,12 @@ import com.example.finalproject_gplx.model.Answer;
 import com.example.finalproject_gplx.model.Exam;
 import com.example.finalproject_gplx.model.Question;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Objects;
 
 public class Thi extends AppCompatActivity {
     private BD_Helper databaseHelper;
@@ -28,11 +37,15 @@ public class Thi extends AppCompatActivity {
     private Exam exam;
     private RecyclerView rvQuestion;
     private Handler handler;
+    ProgressBar pbTienDo;
+    int id_exam;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         databaseHelper = new BD_Helper(Thi.this);
         try {
             databaseHelper.openDatabase();
@@ -43,9 +56,11 @@ public class Thi extends AppCompatActivity {
         txtDe_thi = findViewById(R.id.txtDe_thi);
         txtTien_do = findViewById(R.id.txtTien_do);
         btn_submit = findViewById(R.id.btn_submit);
+        pbTienDo = findViewById(R.id.seekBar);
+        rvQuestion = findViewById(R.id.rvExam);
 
         List<Exam> examList = databaseHelper.getAllExam();
-        int id_exam = Integer.parseInt(getIntent().getStringExtra("de_thi"));
+        id_exam = Integer.parseInt(getIntent().getStringExtra("de_thi"));
 
 
         for (Exam exam:examList){
@@ -53,21 +68,35 @@ public class Thi extends AppCompatActivity {
                 this.exam = exam;
             }
         }
+
         String question = exam.getList_ques();
         String[] list_question = question.split(",");
-        List<Question> lst = databaseHelper.getAllQuestion();
-        List<Answer> lst_answer = databaseHelper.getAllAnswer();
-        for(Question question1:lst){
+
+        List<Question> lst = new ArrayList<Question>();
+        List<Question> lst2 = new ArrayList<Question>();
+        List<Question> test = databaseHelper.getAllQuestion();
+        for (int i = 0; i < list_question.length; i++){
+            int quesID = Integer.parseInt(list_question[i]);
+            Question q1 = databaseHelper.getQuestionById(quesID);
+            lst2.add(q1);
+        }
+
+        for(int i = 0; i < lst2.size(); i++){
+            Question question1 = lst2.get(i);
             List<Answer> answerList = databaseHelper.getAnswersByQuestionId(question1.getId());
             question1.setAnswer(answerList);
+
+            lst.add(question1);
         }
 
 
-        txtDe_thi.setText("Đề thi số: "+exam.getId());
-//        exam=databaseHelper.getExamDetail(exam);
-//        questionList=exam.getQuestions();
-        //ExamAdapter examAdapter = new ExamAdapter(this,questionList);
-        //rvQuestion.setAdapter(examAdapter);
+        txtDe_thi.setText("Đề thi số: " + exam.getId());
+
+        QuesAdapter examAdapter = new QuesAdapter(this,lst);
+        String str = "Độ dài: " + examAdapter.getItemCount();
+        txtTien_do.setText(str);
+        rvQuestion.setAdapter(examAdapter);
+        this.rvQuestion.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         startTimer();
 
     }

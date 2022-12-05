@@ -15,34 +15,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject_gplx.R;
 import com.example.finalproject_gplx.model.Answer;
+import com.example.finalproject_gplx.model.Exam;
 import com.example.finalproject_gplx.model.Question;
 
 import java.util.List;
 
-public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.QuesViewHolder> {
+public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     private Context context;
-    private List<Question> questionList;
+    private List<Question> mData;
     private LayoutInflater mInflater;
+    private QuesAdapter.ItemClickListener mClickListener;
 
     private boolean[] mCheckedState=new boolean[25];
     private int[] mSelectedAnswer=new int[25];
 
     public QuesAdapter(Context context, List<Question> questionList) {
         this.context = context;
-        this.questionList = questionList;
+        this.mInflater = LayoutInflater.from(context);
+        this.mData = questionList;
     }
 
     @Override
-    public QuesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = mInflater.inflate(R.layout.question_item_view, parent, false);
-        return new QuesViewHolder(view);
+        return new QuesAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuesAdapter.QuesViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Question question = questionList.get(position);
-        holder.txtQues.setText("Câu hỏi số: "+position+1);
+    public void onBindViewHolder(QuesAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        Question question = mData.get(position);
+        holder.txtQues.setText("Câu hỏi số: " + position);
         holder.txtPass.setText(question.getContent());
         if (question.getAnswer().size()==4){
             holder.btnA.setText(question.getAnswer().get(0).getContent());
@@ -111,20 +114,35 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.QuesViewHolder
                 }
             }
         });
+        String mDrawableName =question.getImage();
+        if (mDrawableName != null){
+            mDrawableName = mDrawableName.substring(0, mDrawableName.length() - 5);
+            String uri = "@drawable/" + mDrawableName;  // where myresource (without the extension) is the file
+            int imageResource = context.getApplicationContext().getResources().getIdentifier(uri, null, context.getApplicationContext().getPackageName());
+            holder.imgQues.setImageResource(imageResource);
+        } else{
+
+            ViewGroup.LayoutParams param = holder.imgQues.getLayoutParams();
+            param.height = 0;
+            holder.imgQues.setLayoutParams(param);
+            //imageQuestion.setVisibility(View.INVISIBLE);
+        }
+
     }
+
 
     @Override
     public int getItemCount() {
-        return questionList.size();
+        return mData.size();
     }
 
-    public class QuesViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView txtQues,txtPass;
         RadioGroup rdgAns;
         RadioButton btnA,btnB,btnC,btnD;
         ImageView imgQues;
 
-        public QuesViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQues = itemView.findViewById(R.id.txtQuestion);
             txtPass = itemView.findViewById(R.id.txtPass);
@@ -135,6 +153,26 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.QuesViewHolder
             btnD = itemView.findViewById(R.id.btnD);
             imgQues = itemView.findViewById(R.id.imgQuestion);
         }
+
+        @Override
+        public void onClick(View view) {
+            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        }
     }
+
+    // convenience method for getting data at click position
+    Question getItem(int id) {
+        return  mData.get(id);
+    }
+
+    // allows clicks events to be caught
+    void setClickListener(QuesAdapter.ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
 }
 

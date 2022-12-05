@@ -37,8 +37,6 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ViewHolder> {
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
-
-
     }
 
     @Override

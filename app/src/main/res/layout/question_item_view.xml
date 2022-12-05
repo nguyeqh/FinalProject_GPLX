@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="4dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="20dp"
     android:paddingTop="10dp">
 
     <LinearLayout
@@ -20,6 +22,12 @@
             android:text="Câu hỏi"
             android:textSize="19sp"
             android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/txtPass"
+            android:textColor="#FF0015"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nội dung câu hỏi"/>
 
 
 
@@ -68,11 +76,7 @@
                 android:textSize="16sp" />
         </RadioGroup>
 
-        <TextView
-            android:id="@+id/txtPass"
-            android:textColor="#FF0015"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
