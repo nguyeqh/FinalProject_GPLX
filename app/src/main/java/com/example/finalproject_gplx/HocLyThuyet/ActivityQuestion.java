@@ -1,8 +1,6 @@
 package com.example.finalproject_gplx.HocLyThuyet;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,9 +10,7 @@ import com.example.finalproject_gplx.DB_helper.BD_Helper;
 import com.example.finalproject_gplx.R;
 import com.example.finalproject_gplx.model.Answer;
 import com.example.finalproject_gplx.model.Question;
-import com.example.finalproject_gplx.model.Sign;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 

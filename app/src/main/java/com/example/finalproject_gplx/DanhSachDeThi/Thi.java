@@ -46,6 +46,8 @@ public class Thi extends AppCompatActivity {
 
         List<Exam> examList = databaseHelper.getAllExam();
         int id_exam = Integer.parseInt(getIntent().getStringExtra("de_thi"));
+
+
         for (Exam exam:examList){
             if (exam.getId()==id_exam){
                 this.exam = exam;

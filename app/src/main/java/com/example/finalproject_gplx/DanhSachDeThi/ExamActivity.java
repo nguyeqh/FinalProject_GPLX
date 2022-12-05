@@ -1,6 +1,5 @@
 package com.example.finalproject_gplx.DanhSachDeThi;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,7 +12,6 @@ import com.example.finalproject_gplx.DB_helper.BD_Helper;
 import com.example.finalproject_gplx.R;
 import com.example.finalproject_gplx.model.Exam;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -29,7 +27,12 @@ public class ExamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bo_de_thi);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        rvExam = findViewById(R.id.list_cau_hoi);
+
+
+
+        rvExam = findViewById(R.id.list_de_thi);
+
+
         btnCreate = findViewById(R.id.btn_create_exam);
         //createDatabase();
         databaseHelper = new BD_Helper(this);

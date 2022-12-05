@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void buttonClickManager(){
         btnHocBienBao.setOnClickListener(v -> {
-            //Intent intent = new Intent(MainActivity.this, HocBienBao.class);
-            Intent intent = new Intent(MainActivity.this, Thi.class);
+            Intent intent = new Intent(MainActivity.this, HocBienBao.class);
+            //Intent intent = new Intent(MainActivity.this, Thi.class);
             intent.putExtra("de_thi","1");
             startActivity(intent);
         });
