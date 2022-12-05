@@ -5,12 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/constraintLayout"
         android:layout_width="410dp"
         android:layout_height="68dp"
         android:layout_marginTop="4dp"
-        android:layout_weight="1"
         android:background="@drawable/bg_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,45 +20,47 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="149dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="12dp"
             android:text="Bộ đề thi"
             android:textColor="#fff"
             android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/btnBackStart"
             android:layout_width="60dp"
-            android:layout_height="34dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/abc_vector_test" />
+            android:layout_height="34dp" />
 
         <Button
             android:id="@+id/btn_create_exam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginStart="37dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="#2196F3"
-            android:text="Đề mới"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:minHeight="48dp"
+            android:text="Đề mới" />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_de_thi"
+        android:id="@+id/rv_list_de_thi"
+
         android:layout_width="409dp"
         android:layout_height="660dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

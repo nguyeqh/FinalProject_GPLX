@@ -47,10 +47,10 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 if (!sign.isCheck()){
-                    holder.myTextView.setTextColor(Color.RED);
+                    holder.myTextView.setBackgroundColor(Color.RED);
                 } else
                 {
-                    holder.myTextView.setTextColor(Color.GREEN);
+                    holder.myTextView.setBackgroundColor(Color.GREEN);
                 }
 
             }

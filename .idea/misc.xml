@@ -3,15 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/drawable-v24/seekbartiendo.xml" value="0.1355" />
+        <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/drawable-v24/thumb.xml" value="0.1355" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/drawable/ic_round_solid.xml" value="0.136" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/drawable/solid_rectangle.xml" value="0.136" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_bo_cau_hoi.xml" value="0.20416666666666666" />
-        <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_bo_de_thi.xml" value="0.15217391304347827" />
+        <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_bo_de_thi.xml" value="0.25" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_exam.xml" value="0.13703703703703704" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_hoc_bien_bao.xml" value="0.1" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_ketqua.xml" value="0.1" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_thi_trac_nghiem.xml" value="0.25" />
+        <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/activity_thi_trac_nghiem.xml" value="0.1" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/exam_item_view.xml" value="0.20416666666666666" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/list_view_items.xml" value="0.203125" />
         <entry key="..\:/Homework/MoblieDev/FinalProject_GPLX/app/src/main/res/layout/question_item.xml" value="0.20416666666666666" />

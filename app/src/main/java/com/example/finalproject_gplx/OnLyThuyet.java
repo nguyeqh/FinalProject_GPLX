@@ -26,7 +26,7 @@ public class OnLyThuyet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thi_trac_nghiem);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        rvLyThuyet = findViewById(R.id.list_de_thi);
+        rvLyThuyet = findViewById(R.id.recyclerViewAnswer);
         initListViewData();
 
     }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/MainLayout"
     tools:context=".MainActivity"
-    android:background="@color/milk">
+    android:background="@color/white">
 
 
 

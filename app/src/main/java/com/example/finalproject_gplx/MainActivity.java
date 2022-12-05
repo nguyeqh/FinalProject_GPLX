@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,14 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView btnHocBienBao,btnThiHachSach,btnOnLyThuyet;
     DatePicker datePicker;
-    TextView tvDate, lbTimeRemain;
+    TextView tvDate, lbTimeRemain, lbTienDo;
     Button btnOKDate;
+    ProgressBar pbOnTap, pbThiHachSach;
 
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    int savedQuestion = 1;
 
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String endDateKey = "endDateKey";
+    public static final String tiendoOnKey = "tiendoonKey";
+    public static final int ACTIVITY_THI_TRAC_NGHIEM = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +54,37 @@ public class MainActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String endDate = sharedpreferences.getString(endDateKey, null);
+        savedQuestion =  sharedpreferences.getInt(tiendoOnKey, 1);
+        try{
+            pbOnTap.setProgress(savedQuestion);
+            String socau = savedQuestion + "/600";
+            lbTienDo.setText(socau);
+        } catch (NullPointerException e){
 
+        }
 
         AssignAddress();
         setTimeRemain(endDate);
         buttonClickManager();
 
-
-
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==ACTIVITY_THI_TRAC_NGHIEM)
+        {
+            savedQuestion = data.getIntExtra("cauhoi", 1);
+            pbOnTap.setProgress(savedQuestion);
+            String socau = savedQuestion + "/600";
+            lbTienDo.setText(socau);
+
+            editor = sharedpreferences.edit();
+            editor.putInt(tiendoOnKey, savedQuestion);
+            editor.apply();
+        }
     }
 
 
@@ -77,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
         tvDate = findViewById(R.id.tvDate);
         btnOKDate = findViewById(R.id.btnOkDate);
         lbTimeRemain = findViewById(R.id.labelTimeRemain2);
+        pbOnTap = findViewById(R.id.progressBaiOnTap);
+        pbThiHachSach = findViewById(R.id.progressBaiThi);
+        pbOnTap.setMax(600);
+        lbTienDo = findViewById(R.id.tvTientrinhOnThi);
     }
 
     private void setTimeRemain(String endDate){
@@ -120,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         btnHocBienBao.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, HocBienBao.class);
             //Intent intent = new Intent(MainActivity.this, Thi.class);
-            intent.putExtra("de_thi","1");
+            //intent.putExtra("de_thi","1");
             startActivity(intent);
         });
 
@@ -130,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
         });
         btnOnLyThuyet.setOnClickListener(v -> {
             Intent intent = new Intent( MainActivity.this, ThiTracNghiem.class);
-            startActivity(intent);
+            intent.putExtra("cauhoi", savedQuestion);
+            startActivityForResult(intent,ACTIVITY_THI_TRAC_NGHIEM);
         });
 
 

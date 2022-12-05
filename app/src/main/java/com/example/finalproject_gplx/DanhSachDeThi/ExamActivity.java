@@ -1,7 +1,10 @@
 package com.example.finalproject_gplx.DanhSachDeThi;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject_gplx.DB_helper.BD_Helper;
 import com.example.finalproject_gplx.R;
+import com.example.finalproject_gplx.model.Answer;
 import com.example.finalproject_gplx.model.Exam;
 
 import java.util.List;
@@ -17,10 +21,11 @@ import java.util.Objects;
 import java.util.Random;
 
 public class ExamActivity extends AppCompatActivity {
-    private List<Exam> examList;
-    private Button btnCreate;
-    private RecyclerView rvExam;
-    private BD_Helper databaseHelper;
+    List<Exam> examList;
+    Button btnCreate;
+    RecyclerView rvExam;
+    BD_Helper databaseHelper;
+    TextView tvTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,8 @@ public class ExamActivity extends AppCompatActivity {
 
 
 
-        rvExam = findViewById(R.id.list_de_thi);
+        rvExam = findViewById(R.id.rv_list_de_thi);
+
 
 
         btnCreate = findViewById(R.id.btn_create_exam);
@@ -43,17 +49,11 @@ public class ExamActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         examList = databaseHelper.getAllExam();
-        ExamAdapter adapter = new ExamAdapter(this, examList);
 
-        if (examList.size() > 0) {
-            adapter=new ExamAdapter(ExamActivity.this,examList);
-            rvExam.setAdapter(adapter);
-            rvExam.setLayoutManager(new LinearLayoutManager(ExamActivity.this, LinearLayoutManager.VERTICAL, false));
-        }else {
-            Toast.makeText(this, "Không có đề thi nào", Toast.LENGTH_SHORT).show();
-            rvExam.setAdapter(adapter);
-            rvExam.setLayoutManager(new LinearLayoutManager(ExamActivity.this, LinearLayoutManager.VERTICAL, false));
-        }
+        ExamAdapter eadapter = new ExamAdapter(this, examList);
+        this.rvExam.setAdapter(eadapter);
+        this.rvExam.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
         btnCreate.setOnClickListener(v -> {
             examList.clear();
             createExam();

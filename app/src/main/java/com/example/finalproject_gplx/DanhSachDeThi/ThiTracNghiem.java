@@ -5,7 +5,9 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.finalproject_gplx.DB_helper.BD_Helper;
 import com.example.finalproject_gplx.HocLyThuyet.QuestionAdapter;
+import com.example.finalproject_gplx.MainActivity;
 import com.example.finalproject_gplx.OnLyThuyet;
 import com.example.finalproject_gplx.OnTap.StudyTrafficSignAdapter;
 import com.example.finalproject_gplx.R;
@@ -36,7 +39,13 @@ public class ThiTracNghiem extends AppCompatActivity {
     TextView tvAnsDung;
     BD_Helper databaseHelper;
     Button btnNext, btnPre;
+    ImageButton imaButtonHome;
     int cauhoi;
+
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String questionKey = "questionKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,13 @@ public class ThiTracNghiem extends AppCompatActivity {
         Intent intent = this.getIntent();
         cauhoi = intent.getIntExtra("cauhoi", 1);
 
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        int current = sharedpreferences.getInt(questionKey, 1);
+
+        if (cauhoi < current){
+            cauhoi = current;
+        }
+
         tvQuestion = findViewById(R.id.tvQuestion);
         imageQuestion = findViewById(R.id.imageViewQuestion);
         recyclerViewAnswer = findViewById(R.id.recyclerViewAnswer);
@@ -55,6 +71,7 @@ public class ThiTracNghiem extends AppCompatActivity {
         databaseHelper = new BD_Helper(ThiTracNghiem.this);
         btnNext = findViewById(R.id.btnNext);
         btnPre = findViewById(R.id.btnBack);
+        imaButtonHome = findViewById(R.id.imaButtonHome);
         try {
             databaseHelper.createDatabase();
         } catch (IOException e) {
@@ -69,6 +86,11 @@ public class ThiTracNghiem extends AppCompatActivity {
             public void onClick(View view) {
                 if (cauhoi < 600) {
                     cauhoi = cauhoi + 1;
+
+                    editor = sharedpreferences.edit();
+                    editor.putInt(questionKey, cauhoi);
+                    editor.apply();
+
                     setCauHoi(cauhoi);
                 }
             }
@@ -81,6 +103,16 @@ public class ThiTracNghiem extends AppCompatActivity {
                     cauhoi = cauhoi - 1;
                     setCauHoi(cauhoi);
                 }
+            }
+        });
+
+        imaButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent();
+                intent1.putExtra("cauhoi", cauhoi);
+                setResult(2, intent1);
+                finish();
             }
         });
 
